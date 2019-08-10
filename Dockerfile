@@ -1,4 +1,4 @@
-FROM gradle:4.6-jdk8-alpine as compile
+FROM gradle:5.5.1-jdk8 as compile
 COPY . /home/source/java
 WORKDIR /home/source/java
 USER root
