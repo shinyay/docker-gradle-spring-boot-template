@@ -6,7 +6,7 @@ RUN chown -R gradle /home/source/java
 USER gradle
 RUN gradle clean assemble
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8u222-jre-slim-buster
 WORKDIR /home/application/java
 COPY --from=compile "/home/source/java/build/libs/demo-0.0.1-SNAPSHOT.jar" .
 EXPOSE 8080
