@@ -4,7 +4,7 @@ WORKDIR /home/source/java
 USER root
 RUN chown -R gradle /home/source/java
 USER gradle
-RUN gradle clean build
+RUN gradle clean assemble
 
 FROM openjdk:8-jre-alpine
 WORKDIR /home/application/java
