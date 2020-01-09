@@ -8,6 +8,6 @@ RUN gradle clean assemble
 
 FROM openjdk:8u222-jre-slim-buster
 WORKDIR /home/application/java
-COPY --from=compile "/home/source/java/build/libs/demo-0.0.1-SNAPSHOT.jar" .
+COPY --from=compile "/home/source/java/build/libs/demo.jar" .
 EXPOSE 8080
-ENTRYPOINT [ "java", "-jar", "/home/application/java/demo-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT [ "java", "-jar", "/home/application/java/demo.jar"]
