@@ -1,4 +1,4 @@
-FROM gradle:6.0.1-jdk11 as compile
+FROM gradle:6.5.0-jdk11 as compile
 COPY . /home/source/java
 WORKDIR /home/source/java
 USER root
