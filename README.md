@@ -6,7 +6,7 @@ Optimized Dockerfile template for Spring Boot to be reduced size and secured.
 
 ### Multi-stage Docker build
 
-```
+```dockerfile
 FROM gradle:6.5.1-jdk11 as java-build
   :
 RUN gradle assemble
@@ -21,13 +21,24 @@ ENTRYPOINT [ "java", ...]
 
 Most frequently changing resources, usually the **class** and **static resources** in the application itself, to be layered after the more slowly changing resources
 
-```
+```dockerfile
 COPY --from=java-build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=java-build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=java-build ${DEPENDENCY}/BOOT-INF/classes /app
 ```
 
 ### UseContainerSupport
+
+- **-XX:InitialRAMPercentage**
+    - Set initial JVM Heap size as a percentage of the total memory
+- **-XX:MinRAMPercentage**
+    - Set the minimal JVM Heap size as a percentage of the total memory
+- **-XX:MaxRAMPercentage**
+    - Set the maximum JVM Heap size as a percentage of the total memory
+
+```dockerfile
+ENV _JAVA_OPTIONS "-XX:MaxRAMPercentage=80 -XX:MinRAMPercentage=50"
+```
 
 #### Default settings
 
