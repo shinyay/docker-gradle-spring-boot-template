@@ -11,4 +11,4 @@ COPY --from=java-build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=java-build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=java-build ${DEPENDENCY}/BOOT-INF/classes /app
 # We now run Java with a classpath definition, instead of a link to a JAR
-ENTRYPOINT ["java","-cp","app:app/lib/*","io.spring.shinyay.demo.DemoApplication"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","io.spring.shinyay.demo.DemoApplicationKt"]
