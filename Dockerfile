@@ -1,6 +1,5 @@
 FROM gradle:6.5.1-jdk11 as java-build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /app/
+COPY --chown=gradle:gradle . .
 RUN gradle assemble --no-daemon
 # Un-pack the uber-JAR
 RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
