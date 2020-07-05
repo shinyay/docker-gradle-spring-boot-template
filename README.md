@@ -29,6 +29,8 @@ COPY --from=java-build ${DEPENDENCY}/BOOT-INF/classes /app
 
 ### UseContainerSupport
 
+#### Default settings
+
 JVM will automatically detect the Control Group memory limit with the **UseContainerSupport** option.
 
 ```console
@@ -44,6 +46,27 @@ openjdk version "11.0.7" 2020-04-14
 OpenJDK Runtime Environment 18.9 (build 11.0.7+10)
 OpenJDK 64-Bit Server VM 18.9 (build 11.0.7+10, mixed mode)
 ```
+
+#### Defaul Max Heap size
+
+```console
+$ docker run -m 1GB openjdk:11.0.7-jre-slim java -XshowSettings:vm -version
+
+VM settings:
+    Max. Heap Size (Estimated): 247.50M
+    Using VM: OpenJDK 64-Bit Server VM
+```
+
+#### MaxRAMPed Max Heap size
+
+```console
+$ docker run -m 1GB openjdk:11.0.7-jre-slim java -XX:MaxRAMPercentage=80 -XX:MinRAMPercentage=50 -XshowSettings:vm -version
+
+VM settings:
+    Max. Heap Size (Estimated): 792.69M
+    Using VM: OpenJDK 64-Bit Server VM
+```
+
 ## Demo
 
 ## Features
