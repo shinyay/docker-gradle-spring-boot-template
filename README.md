@@ -4,6 +4,19 @@ Optimized Dockerfile template for Spring Boot to be reduced size and secured.
 
 ## Description
 
+### Multi-stage Docker build
+
+```
+FROM gradle:6.5.1-jdk11 as java-build
+  :
+RUN gradle assemble
+FROM gcr.io/distroless/java:11
+  :
+COPY --from=java-build
+  :
+ENTRYPOINT [ "java", ...]
+```
+
 ## Demo
 
 ## Features
