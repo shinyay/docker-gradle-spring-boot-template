@@ -17,6 +17,7 @@ COPY --from=java-build /etc/passwd /etc/shadow /etc/
 USER bootapp
 # Java Option
 #   -XX:+PrintFlagsFinal : Display all options and their values used by the JVM
+#   -XshowSettings:vm : Display the settings of the JVM
 ENV _JAVA_OPTIONS "-XX:MaxRAMPercentage=80 -XX:MinRAMPercentage=50 -Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=true -Dfile.encoding=UTF-8"
 # Run Java with a classpath definition instead of a link to a JAR
 ENTRYPOINT ["java","-cp","app:app/lib/*","io.spring.shinyay.demo.DemoApplicationKt"]
