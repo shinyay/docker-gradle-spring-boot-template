@@ -78,7 +78,19 @@ VM settings:
     Using VM: OpenJDK 64-Bit Server VM
 ```
 
+### "Distroless" Docker Images
+"Distroless" images contain only your application and its runtime dependencies. They do not contain package managers, shells or any other programs you would expect to find in a standard Linux distribution.
+
+```dockerfile
+FROM gcr.io/distroless/java:11
+  :
+ENTRYPOINT [ "java", ...]
+```
+
+
 ## Demo
+### SonarQube
+
 
 ## Features
 
