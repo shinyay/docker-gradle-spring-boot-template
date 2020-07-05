@@ -27,6 +27,23 @@ COPY --from=java-build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=java-build ${DEPENDENCY}/BOOT-INF/classes /app
 ```
 
+### UseContainerSupport
+
+JVM will automatically detect the Control Group memory limit with the **UseContainerSupport** option.
+
+```console
+$ docker run -m 1GB openjdk:11.0.7-jre-slim java \
+            -XX:+PrintFlagsFinal -version \
+            | grep -E "UseContainerSupport | InitialRAMPercentage | MaxRAMPercentage | MinRAMPercentage"
+WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+   double InitialRAMPercentage                     = 1.562500                                  {product} {default}
+   double MaxRAMPercentage                         = 25.000000                                 {product} {default}
+   double MinRAMPercentage                         = 50.000000                                 {product} {default}
+     bool UseContainerSupport                      = true                                      {product} {default}
+openjdk version "11.0.7" 2020-04-14
+OpenJDK Runtime Environment 18.9 (build 11.0.7+10)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.7+10, mixed mode)
+```
 ## Demo
 
 ## Features
