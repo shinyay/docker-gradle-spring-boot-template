@@ -91,6 +91,14 @@ ENTRYPOINT [ "java", ...]
 ## Demo
 ### SonarQube
 
+```console
+$ docker run --rm -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+Log in to [http://localhost:9000](http://localhost:9000) with System Administrator credentials (login=admin, password=admin).
+
+![sonarqube-token](images/sonarqube-token.png)
+
 - **build.gradle.kts***
 ```
 plugins {
@@ -104,12 +112,6 @@ plugins {
 systemProp.sonar.host.url=http://localhost:9000
 systemProp.sonar.login=<TOKEN>
 ```
-
-```console
-$ docker run --rm -d --name sonarqube -p 9000:9000 sonarqube
-```
-
-Log in to [http://localhost:9000](http://localhost:9000) with System Administrator credentials (login=admin, password=admin).
 
 ```console
 $ ./gradlew sonarqube
