@@ -109,7 +109,7 @@ systemProp.sonar.login=<TOKEN>
 $ docker run --rm -d --name sonarqube -p 9000:9000 sonarqube
 ```
 
-Log in to http://localhost:9000 with System Administrator credentials (login=admin, password=admin).
+Log in to [http://localhost:9000](http://localhost:9000) with System Administrator credentials (login=admin, password=admin).
 
 ```console
 $ ./gradlew sonarqube
