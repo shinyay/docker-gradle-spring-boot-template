@@ -5,7 +5,7 @@ RUN gradle assemble --no-daemon
 # Un-pack the uber-JAR
 RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
 
-FROM openjdk:11.0.7-jre-slim
+FROM gcr.io/distroless/java:11
 ARG DEPENDENCY=/app/build/libs/dependency
 COPY --from=java-build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=java-build ${DEPENDENCY}/META-INF /app/META-INF
