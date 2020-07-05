@@ -17,6 +17,16 @@ COPY --from=java-build
 ENTRYPOINT [ "java", ...]
 ```
 
+### Clean separation between Dependencies and Application resources
+
+Most frequently changing resources, usually the **class** and **static resources** in the application itself, to be layered after the more slowly changing resources
+
+```
+COPY --from=java-build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=java-build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=java-build ${DEPENDENCY}/BOOT-INF/classes /app
+```
+
 ## Demo
 
 ## Features
