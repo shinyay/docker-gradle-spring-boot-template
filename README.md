@@ -1,6 +1,6 @@
-# Name
+# Dockerfile template for Spring Boot
 
-Overview
+Optimized Dockerfile template for Spring Boot to be reduced size and secured.
 
 ## Description
 
