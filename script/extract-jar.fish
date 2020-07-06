@@ -1,6 +1,8 @@
 #!/usr/bin/env fish
 
 function do_func
+  set -l _project docker-gradle-spring-boot-template
+
   argparse -n do_func 'h/help' 'j/jar=' -- $argv
   or return 1
 
@@ -12,7 +14,7 @@ function do_func
   set -lq _flag_jar
   or set -l _flag_jar demo.jar
   
-  cd (pwd |awk -F '/docker-gradle-spring-boot-template' '{print $1}')/docker-gradle-spring-boot-template/build/libs/ && jar xvf $_flag_jar && cd -
+  cd (pwd |awk -F "/$_project" '{print $1}')/$_project/build/libs/ && jar xvf $_flag_jar && cd -
 end
 
 do_func $argv
