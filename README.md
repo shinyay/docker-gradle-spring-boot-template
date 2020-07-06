@@ -117,6 +117,14 @@ systemProp.sonar.login=<TOKEN>
 $ ./gradlew sonarqube
 ```
 
+## Custom JRE
+**Extracting JAR** -> **Jdeps** -> **Jlink**
+
+```console
+$ cd build/libs/ && jar xvf spring-boot.jar && cd -
+```
+
+
 ## Features
 
 - feature:1
