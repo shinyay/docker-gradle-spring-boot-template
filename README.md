@@ -143,6 +143,16 @@ $ cd build/libs/ && \
 java.base,java.desktop,java.instrument,java.management.rmi,java.naming,java.prefs,java.scripting,java.security.jgss,java.sql,jdk.httpserver,jdk.unsupported
 ```
 
+### Jlink
+
+```dockerfile
+FROM openjdk:14-alpine AS jre-build
+WORKDIR /jlink
+ENV PATH $JAVA_HOME/bin:$PATH
+RUN jlink --strip-java-debug-attributes --no-header-files --no-man-pages --compress=2 --module-path $JAVA_HOME \
+    --add-modules java.base,java.desktop,java.instrument,java.management.rmi,java.naming,java.prefs,java.scripting,java.security.jgss,java.sql,jdk.httpserver,jdk.unsupported \
+    --output jre-min
+```
 
 ## Features
 
