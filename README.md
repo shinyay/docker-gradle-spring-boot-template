@@ -120,8 +120,27 @@ $ ./gradlew sonarqube
 ## Custom JRE
 **Extracting JAR** -> **Jdeps** -> **Jlink**
 
+### Extracting JAR
+
 ```console
-$ cd build/libs/ && jar xvf spring-boot.jar && cd -
+$ cd build/libs/ && jar xvf SPRING_BOOT.jar && cd -
+```
+
+### Jdeps
+
+```console
+$ cd build/libs/ && \
+  jdeps --class-path "BOOT-INF/lib/*" \
+    --multi-release base \
+    --ignore-missing-deps \
+    -recursive \
+    --print-module-deps \
+    SPRING_BOOT.jar && \
+  cd -
+```
+
+```console
+java.base,java.desktop,java.instrument,java.management.rmi,java.naming,java.prefs,java.scripting,java.security.jgss,java.sql,jdk.httpserver,jdk.unsupported
 ```
 
 
