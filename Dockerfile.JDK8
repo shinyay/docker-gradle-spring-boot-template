@@ -1,9 +1,10 @@
 FROM gradle:6.5.1-jdk8 as build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
+WORKDIR /app
+COPY --chown=gradle:gradle src src
+COPY --chown=gradle:gradle build.gradle.kts .
 RUN gradle assemble --no-daemon
 
 FROM openjdk:8u252-jre-slim
 RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/app.jar
+COPY --from=build /app/build/libs/*.jar /app/app.jar
 ENTRYPOINT [ "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
