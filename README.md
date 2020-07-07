@@ -156,8 +156,27 @@ RUN jlink --strip-java-debug-attributes --no-header-files --no-man-pages --compr
 
 ## Features
 
-- feature:1
-- feature:2
+### Docker Experimental Features
+#### Experimental Features Enabled
+
+- **~/.docker/config.json**
+  - **"experimental": "enabled"**
+
+```json
+{
+        "auths": {
+        },
+        "experimental": "enabled"
+}
+```
+
+```console
+$ docker buildx --help
+
+Usage:	docker buildx COMMAND
+```
+
+
 
 ## Requirement
 
