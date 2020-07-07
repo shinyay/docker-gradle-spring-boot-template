@@ -1,4 +1,4 @@
-# syntax = docker/dockerfile:1.0-experimental
+# syntax = docker/dockerfile:experimental
 # Using BuildKit
 ##########
 
@@ -16,7 +16,7 @@ RUN jlink --strip-java-debug-attributes --no-header-files --no-man-pages --compr
 FROM gradle:6.5.1-jdk14 as java-build
 WORKDIR /app/
 COPY --chown=gradle:gradle . .
-RUN gradle assemble --no-daemon
+RUN --mount=type=cache,id=gradle,target=/home/gradle/.gradle gradle assemble --no-daemon
 
 # Create Image
 ##########
