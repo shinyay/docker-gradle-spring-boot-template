@@ -2,7 +2,7 @@
 # Using BuildKit
 ##########
 
-# Create Custom Runtime
+# Create Custom Runtime with Jlink
 ##########
 FROM openjdk:14-alpine AS jre-build
 WORKDIR /jlink
@@ -11,6 +11,8 @@ RUN jlink --strip-java-debug-attributes --no-header-files --no-man-pages --compr
     --add-modules java.base,java.desktop,java.instrument,java.management.rmi,java.naming,java.prefs,java.scripting,java.security.jgss,java.sql,jdk.httpserver,jdk.unsupported \
     --output jre-min
 
+# Build Jar file with Gradle
+##########
 FROM gradle:6.5.1-jdk14 as java-build
 WORKDIR /app/
 COPY --chown=gradle:gradle . .
