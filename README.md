@@ -176,7 +176,12 @@ $ docker buildx --help
 Usage:	docker buildx COMMAND
 ```
 
+#### Dockerfile for Eperimental Features
 
+```dockerfile
+# syntax=docker/dockerfile:experimental
+FROM ...
+```
 
 ## Requirement
 
