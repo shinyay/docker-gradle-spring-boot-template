@@ -183,6 +183,20 @@ Usage:	docker buildx COMMAND
 FROM ...
 ```
 
+#### Mount Gradle Build Cache
+
+- **--mount=type=cache**
+
+```dockerfile
+RUN --mount=type=cache,id=gradle,target=/home/gradle/.gradle gradle assemble --no-daemon
+```
+
+#### Docker Build with Buildx
+
+```console
+$ docker buildx build .
+```
+
 ## Requirement
 
 ## Usage
