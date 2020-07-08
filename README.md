@@ -99,7 +99,8 @@ Log in to [http://localhost:9000](http://localhost:9000) with System Administrat
 
 ![sonarqube-token](images/sonarqube-token.png)
 
-- **build.gradle.kts***
+- **build.gradle.kts**
+
 ```
 plugins {
 	id("org.sonarqube") version "3.0"
