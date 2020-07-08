@@ -197,6 +197,28 @@ RUN --mount=type=cache,id=gradle,target=/home/gradle/.gradle gradle assemble --n
 $ docker buildx build .
 ```
 
+```console
+$ docker buildx --help
+
+Usage:	docker buildx COMMAND
+
+Build with BuildKit
+
+Management Commands:
+  imagetools  Commands to work on images in registry
+
+Commands:
+  bake        Build from a file
+  build       Start a build
+  create      Create a new builder instance
+  inspect     Inspect current builder instance
+  ls          List builder instances
+  rm          Remove a builder instance
+  stop        Stop builder instance
+  use         Set the current builder instance
+  version     Show buildx version information
+  ```
+
 ## Requirement
 
 ## Usage
